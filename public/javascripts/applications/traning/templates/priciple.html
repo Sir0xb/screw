@@ -1,0 +1,222 @@
+<!-- 0x01 -->
+<br>
+<h1 class="ui dividing header">0x01 普通数据 & 包装后的数据</h1>
+
+<br>
+
+<h3 class="ui dividing header">普通数据</h3>
+<div class="ui info ignored message">
+    <p>普通值是没法监听的，就算值发生了变化，也无法实时监听。</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var test = "原始值";
+/***** 变化过程是没法监听的 *****/
+test = "修改原始值";            
+    </code></pre>
+</div>
+
+<br>
+
+<h3 class="ui dividing header">函数扩展过的数据</h3>
+<div class="ui info ignored message">
+    <p>如果是用函数扩展的数值，其变化能做到监听。</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var star = function(newValue) {
+    this.oldValue;
+    this.newValue = newValue;
+
+    if (typeof this.newValue == 'undefined') {
+        return this.oldValue;
+    } else {
+        if (Object.prototype.toString.call(arguments.callee.subscribe) === "[object Function]") {
+            arguments.callee.subscribe(this.newValue, this.oldValue);
+        }
+        
+        this.oldValue = this.newValue;
+        return this.oldValue;
+    }
+};
+
+star(123);
+star(333);
+
+star.subscribe = function (newValue, oldValue) {
+    console.log("newValue: ", newValue, "  oldValue: ", oldValue);
+};
+
+star(444);
+star(555);            
+        </code></pre>
+    </div>
+    <button class="ui orange mini button" data-bind="click: function () { 
+        noty('newValue:  444   oldValue:  333'); 
+        noty('newValue:  555   oldValue:  444'); 
+    }">运行</button>
+</div>
+
+<br><br>
+
+<!-- 0x02 -->
+<br>
+<h1 class="ui dividing header">0x02 普通数据 (单/双)向绑定到 (单/双)向元素</h1>
+
+<br>
+
+<h3 class="ui dividing header">普通数据</h3>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var test = "普通数据";
+    </code></pre>
+</div>
+
+<br>
+
+<!-- 单向 单向元素 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">单向绑定</div>
+    <div class="ui green label">单向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;div data-bind="text: test"&gt;&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div data-bind="text: test"></div>
+</div>
+
+<br>
+
+<!-- 单向 双向元素 -->
+<h4 class="ui dividing header">
+    <div class="ui red label">单向绑定</div>
+    <div class="ui green label">双向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;input data-bind="text: test"&gt;&lt;/input&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui input">
+        <input type="text" data-bind="text: test"></input>
+    </div>  
+</div>
+
+<br>
+
+<!-- 双向 单向元素 -->
+<h4 class="ui dividing header">
+    <div class="ui red label">双向绑定</div>
+    <div class="ui green label">单向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;span data-bind="value: test"&gt;&lt;/span&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div data-bind="value: test"></div>
+</div>
+
+<br>
+
+<!-- 双向 双向元素 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">双向绑定</div>
+    <div class="ui green label">双向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;input data-bind="value: test"&gt;&lt;/input&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui input">
+        <input type="text" data-bind="value: test"></input>
+    </div>  
+</div>
+<button class="ui orange mini button" data-bind="click: function () { noty(test); }">获得test值</button>
+<button class="ui blue mini button" data-bind="click: function () { test = '你好'; }">设置成"你好"</button>
+
+<br><br>
+
+<!-- Summary -->
+<h2 class="ui dividing header">Summary</h2>
+<div class="ui error icon message">
+    <i class="notched circle loading icon"></i>
+    <div class="content">
+        <div class="header">
+        绑定方式与元素特性要一致
+        </div>
+        <p>单向邦单向 or 双向绑双向</p>
+    </div>
+</div>
+
+<br><br>
+
+<!-- 0x02 -->
+<br>
+<h1 class="ui dividing header">0x03 ko 单/双向使用</h1>
+
+<br>
+
+<h3 class="ui dividing header">ko 数据</h3>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var koTest = ko.observable("ko 数据");
+    </code></pre>
+</div>
+
+<br>
+
+<h4 class="ui dividing header">
+    <div class="ui green label">单向绑定</div>
+    <div class="ui green label">单向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;span data-bind="text: koTest"&gt;&lt;/span&gt;
+    </code></pre>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div data-bind="text: koTest"></div> 
+</div>
+
+<br>
+
+<h4 class="ui dividing header">
+    <div class="ui green label">双向绑定</div>
+    <div class="ui green label">双向元素</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;input data-bind="value: test"&gt;&lt;/input&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui input">
+        <input type="text" data-bind="value: koTest"></input>
+    </div>  
+</div>
+<button class="ui orange mini button" data-bind="click: function () { noty(koTest()); }">获得test值</button>
+<button class="ui blue mini button" data-bind="click: function () { koTest('你好 ko'); }">设置成"你好 ko"</button>

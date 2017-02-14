@@ -1,0 +1,324 @@
+<br>
+<!-- The "if" and "ifnot" binding -->
+<h1 class="ui dividing header">The "if" and "ifnot" binding</h1>
+<div class="ui info ignored message">
+    <p>元素会被插入或删除</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- ko if: theValue --&gt;
+    这是 if 中的内容
+&lt;!-- /ko --&gt;
+&lt;div data-bind="if: theValue"&gt;
+    这是 if 中的内容
+&lt;/div&gt;
+&lt;!-- ko ifnot: theValue --&gt;
+    这是 ifnot 中的内容
+&lt;!-- /ko --&gt;
+&lt;div data-bind="if: theValue"&gt;
+    这是 ifnot 中的内容
+&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <!-- ko if: theValue -->
+        这是 if 中的内容
+    <!-- /ko -->
+    <div data-bind="if: theValue">
+        这是 if 中的内容
+    </div>
+    <!-- ko ifnot: theValue -->
+        这是 ifnot 中的内容
+    <!-- /ko -->
+    <div data-bind="ifnot: theValue">
+        这是 ifnot 中的内容
+    </div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { theValue(false); }">设置成 false</button>
+<button class="ui blue mini button" data-bind="click: function () { theValue(true); }">设置成 true</button>
+
+<br><br>
+<!-- The "foreach" binding -->
+<h1 class="ui dividing header">The "foreach" binding</h1>
+<div class="ui info ignored message">
+    <p>数据特性不同，交互时的效果也不同</p>
+</div>
+
+<br>
+
+<!-- 普通数组 & 普通属性 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">普通数组</div>
+    <div class="ui blue label">普通属性</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theList1 = [{
+    a: 1.1, b: 1.2, c: 1.3
+}, {
+    a: 2.1, b: 2.2, c: 2.3
+}, {
+    a: 3.1, b: 3.2, c: 3.3
+}];
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;table class="ui celled table"&gt;
+    &lt;tbody&gt;
+        &lt;!-- ko foreach: theList1 --&gt;
+        &lt;tr&gt;
+            &lt;td data-bind="text: a"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: b"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: c"&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button class="ui orange mini button" data-bind="click: $parent.changeData"&gt;改变数据&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <table class="ui celled table">
+        <tbody>
+            <!-- ko foreach: theList1 -->
+            <tr>
+                <td data-bind="text: a"></td>
+                <td data-bind="text: b"></td>
+                <td data-bind="text: c"></td>
+                <td>
+                    <button class="ui orange mini button" data-bind="click: $parent.changeData">改变数据</button>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>
+<button class="ui blue mini button" data-bind="click: function () { theList1.push({ a: 5, b: 5, c: 5 }); }">添加数据</button>
+
+<br><br>
+
+<!-- 普通数组 & ko属性 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">普通数组</div>
+    <div class="ui blue label">ko 属性</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theList2 = [{
+    a: ko.observable(1.1), b: ko.observable(1.2), c: ko.observable(1.3)
+}, {
+    a: ko.observable(2.1), b: ko.observable(2.2), c: ko.observable(2.3)
+}, {
+    a: ko.observable(3.1), b: ko.observable(3.2), c: ko.observable(3.3)
+}];
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;table class="ui celled table"&gt;
+    &lt;tbody&gt;
+        &lt;!-- ko foreach: theList2 --&gt;
+        &lt;tr&gt;
+            &lt;td data-bind="text: a"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: b"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: c"&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button class="ui orange mini button" data-bind="click: $parent.changeData"&gt;改变数据&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <table class="ui celled table">
+        <tbody>
+            <!-- ko foreach: theList2 -->
+            <tr>
+                <td data-bind="text: a"></td>
+                <td data-bind="text: b"></td>
+                <td data-bind="text: c"></td>
+                <td>
+                    <button class="ui orange mini button" data-bind="click: $parent.changeData">改变数据</button>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>
+<button class="ui blue mini button" data-bind="click: function () { theList2.push({ a: ko.observable(5), b: ko.observable(5), c: ko.observable(5) }); }">添加数据</button>
+
+<br><br>
+
+<!-- ko数组 & 普通属性 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">ko数组</div>
+    <div class="ui blue label">普通属性</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theList3 = ko.observableArray([{
+    a: 1.1, b: 1.2, c: 1.3
+}, {
+    a: 2.1, b: 2.2, c: 2.3
+}, {
+    a: 3.1, b: 3.2, c: 3.3
+}]);
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;table class="ui celled table"&gt;
+    &lt;tbody&gt;
+        &lt;!-- ko foreach: theList3 --&gt;
+        &lt;tr&gt;
+            &lt;td data-bind="text: a"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: b"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: c"&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button class="ui orange mini button" data-bind="click: $parent.changeData"&gt;改变数据&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <table class="ui celled table">
+        <tbody>
+            <!-- ko foreach: theList3 -->
+            <tr>
+                <td data-bind="text: a"></td>
+                <td data-bind="text: b"></td>
+                <td data-bind="text: c"></td>
+                <td>
+                    <button class="ui orange mini button" data-bind="click: $parent.changeData">改变数据</button>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>
+<button class="ui blue mini button" data-bind="click: function () { theList3.push({ a: 5, b: 5, c: 5 }); }">添加数据</button>
+
+<br><br>
+
+<!-- ko数组 & ko属性 -->
+<h4 class="ui dividing header">
+    <div class="ui green label">ko数组</div>
+    <div class="ui blue label">ko属性</div>
+</h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theList4 = ko.observableArray([{
+    a: ko.observable(1.1), b: ko.observable(1.2), c: ko.observable(1.3)
+}, {
+    a: ko.observable(2.1), b: ko.observable(2.2), c: ko.observable(2.3)
+}, {
+    a: ko.observable(3.1), b: ko.observable(3.2), c: ko.observable(3.3)
+}]);
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;table class="ui celled table"&gt;
+    &lt;tbody&gt;
+        &lt;!-- ko foreach: theList4 --&gt;
+        &lt;tr&gt;
+            &lt;td data-bind="text: a"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: b"&gt;&lt;/td&gt;
+            &lt;td data-bind="text: c"&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;button class="ui orange mini button" data-bind="click: $parent.changeData"&gt;改变数据&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <table class="ui celled table">
+        <tbody>
+            <!-- ko foreach: theList4 -->
+            <tr>
+                <td data-bind="text: a"></td>
+                <td data-bind="text: b"></td>
+                <td data-bind="text: c"></td>
+                <td>
+                    <button class="ui orange mini button" data-bind="click: $parent.changeData">改变数据</button>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>
+<button class="ui blue mini button" data-bind="click: function () { theList4.push({ a: ko.observable(5), b: ko.observable(5), c: ko.observable(5) }); }">添加数据</button>
+
+<br><br>
+<!-- The "component" binding -->
+<h1 class="ui dividing header">The "component" binding</h1>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+// 插件源码
+define(["knockout"], function(ko) {
+    ko.components.register("my-image", {
+        viewModel: function (params) {
+            this.clazz      = params.css;
+            this.defaultImg = params.defaultImg;
+            this.img        = params.img;
+
+            this.hasError = ko.observable(false);
+        },
+        template:
+        '&lt;!-- ko ifnot: hasError --&gt;\
+        &lt;img data-bind="attr: { css: clazz, src: img }, event: { error: function(){ hasError(true); } }"&gt;\
+        &lt;!-- /ko --&gt;\
+        &lt;!-- ko if: hasError --&gt;\
+        &lt;img data-bind="attr: { css: clazz, src: defaultImg }"&gt;\
+        &lt;!-- /ko --&gt;\
+        '
+    });
+});
+
+// 测试数据
+var defaultImg = "http://blog.extreme-advice.com/wp-content/uploads/2013/01/error.png";
+var imgPath = "asdfasdf";
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- ko component: { name: 'my-image', params: { defaultImg: defaultImg, img: imgPath } } --&gt;&lt;!-- /ko --&gt;
+&lt;my-image params="defaultImg: defaultImg, img: imgPath"&gt;&lt;/my-image&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <!-- ko component: { name: 'my-image', params: { defaultImg: defaultImg, img: imgPath } } --><!-- /ko -->
+    <my-image params="defaultImg: defaultImg, img: imgPath"></my-image>
+</div>

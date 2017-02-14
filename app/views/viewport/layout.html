@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- <html><head><script type="text/javascript" src="main.js"></script><style></style></head><body></body></html> -->
+<html>
+    <head>
+        {% include "./meta.html" %}
+        {% block meta %}{% endblock %}
+        <title>{{ title }}</title>
+        {% include "./links.html" %}
+        {% block mainLink %}{% endblock %}
+
+        {% include "./scripts.html" %}
+        {% block mainScript %}{% endblock %}
+    </head>
+    <body>
+        {% include "./data.html" %}
+        {% block content %}{% endblock %}
+        {% block script %}{% endblock %}
+    </body>
+</html>
+<!-- <html><head><script type="text/javascript" src="main.js"> </script><style></style></head><body></body></html>

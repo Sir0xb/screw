@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.ui.fixed.menu, .ui[class*="top fixed"].menu {
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+}
+
+//.ui.footer.segment {
+//    padding: 3em 0em;
+//}
+
+.login_container {
+    background-image: url(/images/background.jpg);
+    background-size: cover;
+    width: 100%!important;
+
+    .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+}
+
+body {
+    background-color: #FFFFFF;
+    position: relative;
+    min-height: 100%;
+    height: auto;
+}
+
+.mycontainer {
+    padding: 4em 0 7em 0!important;
+}
+
+.myfooter{
+    position: absolute!important;
+    padding: 2em 0!important;
+    width: 100%;
+    bottom: 0;
+    z-index: 4;
+}

@@ -1,0 +1,287 @@
+<br>
+<!-- The "value" binding -->
+<h1 class="ui dividing header">The "value" binding</h1>
+<div class="ui info ignored message">
+    <div class="header">更新方式可以设置：valueUpdate 属性</div>
+	<ul class="list">
+		<li>“keyup” - updates your view model when the user releases a key  </li>
+		<li>“keypress” - updates your view model when the user has typed a key. Unlike keyup, this updates repeatedly while the user holds a key down  </li>
+		<li>“afterkeydown” - updates your view model as soon as the user begins typing a character. This works by catching the browser’s keydown event and handling the event asynchronously. This does not work in some mobile browsers.</li>
+	</ul>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;input data-bind="value: theValue, valueUpdate: 'keyup'"&gt;&lt;/input&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+	    <div class="inline field">
+			<input type="text" data-bind="value: theValue, valueUpdate: 'keyup'"></input>
+	        <label data-bind="text: theValue"></label>
+		</div>
+	</div>
+</div>
+
+<br>
+<!-- The "hasFocus" binding -->
+<h1 class="ui dividing header">The "hasFocus" binding</h1>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var isSelected = ko.observable(false);
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;div class="ui form"&gt;
+    &lt;div class="inline field"&gt;
+        &lt;input type="text" data-bind="hasFocus: isSelected"&gt;&lt;/input&gt;
+        &lt;span data-bind="visible: isSelected"&gt;输入框获得了焦点&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;button class="ui orange mini button" data-bind="click: function () { isSelected(true); }"&gt;获得焦点&lt;/button&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+        <div class="inline field">
+            <input type="text" data-bind="hasFocus: isSelected"></input>
+            <span data-bind="visible: isSelected">输入框获得了焦点</span>
+        </div>
+	</div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { isSelected(true); }">获得焦点</button>
+
+<br><br>
+<!-- The "enable" and "disable" binding -->
+<h1 class="ui dividing header">The "enable" and "disable" binding</h1>
+<div class="ui info ignored message">
+    <p>这里只展示 enable 的用法，disable 用法跟 enable 类似</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var isSelected = ko.observable(false);
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;button class="ui orange mini button" data-bind="enable: isEnable, click: function () { noty('我获得自由了'); }"&gt;被试&lt;/button&gt;
+&lt;button class="ui red mini button" data-bind="click: function () { isEnable(false); }"&gt;锁定&lt;/button&gt;
+&lt;button class="ui blue mini button" data-bind="click: function () { isEnable(true); }"&gt;解锁&lt;/button&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <button class="ui orange mini button" data-bind="enable: isEnable, click: function () { noty('我获得自由了'); }">被试</button>
+</div>
+<button class="ui red mini button" data-bind="click: function () { isEnable(false); }">锁定</button>
+<button class="ui blue mini button" data-bind="click: function () { isEnable(true); }">解锁</button>
+
+<br><br>
+<!-- The "checked" binding -->
+<h1 class="ui dividing header">The "checked" binding</h1>
+
+<br>
+
+<!-- radio元素 -->
+<h4 class="ui dividing header">radio元素</h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var radioChecked = ko.observable('shi');
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;div class="ui radio checkbox" data-bind="click: function(){ checked('shi'); }"&gt;
+    &lt;input type="radio" class="hidden" data-bind="checkedValue: 'shi', checked: checked"&gt;
+    &lt;label&gt;是&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="ui radio checkbox" data-bind="click: function(){ checked('fou'); }"&gt;
+    &lt;input type="radio" class="hidden" data-bind="checkedValue: 'fou', checked: checked"&gt;
+    &lt;label&gt;否&lt;/label&gt;
+&lt;/div&gt;
+&lt;!-- 或者 --&gt;
+&lt;div class="ui radio checkbox" data-bind="click: function(){ checked('shi'); }"&gt;
+    &lt;input type="radio" class="hidden" value="shi" data-bind="checked: checked"&gt;
+    &lt;label&gt;是&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="ui radio checkbox" data-bind="click: function(){ checked('fou'); }"&gt;
+    &lt;input type="radio" class="hidden" value="fou" data-bind="checked: checked"&gt;
+    &lt;label&gt;否&lt;/label&gt;
+&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+        <div class="inline field">
+            <div class="ui radio checkbox" data-bind="click: function(){ radioChecked('shi'); }">
+                <input type="radio" class="hidden" data-bind="checkedValue: 'shi', checked: radioChecked">
+                <label>是</label>
+            </div>
+            <div class="ui radio checkbox" data-bind="click: function(){ radioChecked('fou'); }">
+                <input type="radio" class="hidden" data-bind="checkedValue: 'fou', checked: radioChecked">
+                <label>否</label>
+            </div>
+        </div>
+    </div>
+    <div class="ui form">
+        <div class="inline field">
+            <div class="ui radio checkbox" data-bind="click: function(){ radioChecked('shi'); }">
+                <input type="radio" class="hidden" value="shi" data-bind="checked: radioChecked">
+                <label>是</label>
+            </div>
+            <div class="ui radio checkbox" data-bind="click: function(){ radioChecked('fou'); }">
+                <input type="radio" class="hidden" value="fou" data-bind="checked: radioChecked">
+                <label>否</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<!-- checkbox元素 -->
+<h4 class="ui dividing header">checkbox元素<div class="ui red label">实例中的 toggleValue 依赖 ko.observableArray.patch.js</div></h4>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var checkboxChecked = [];
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- 原生 方法 --&gt;
+&lt;div data-bind="inline field"&gt;
+    &lt;input type="checkbox" value="zhangsan" data-bind="checked: checkboxChecked"&gt;张三&lt;/input&gt;
+    &lt;input type="checkbox" value="lisi" data-bind="checked: checkboxChecked"&gt;李四&lt;/input&gt;
+    &lt;input type="checkbox" value="wangwu" data-bind="checked: checkboxChecked"&gt;王五&lt;/input&gt;
+&lt;/div&gt;
+
+&lt;!-- Semantic 方式 --&gt;
+&lt;div class="inline field"&gt;
+    &lt;div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('zhangsan'); }"&gt;
+        &lt;input type="checkbox" class="hidden" value="zhangsan" data-bind="checked: checkboxChecked"&gt;
+        &lt;label&gt;张三&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('lisi'); }"&gt;
+        &lt;input type="checkbox" class="hidden" value="lisi" data-bind="checked: checkboxChecked"&gt;
+        &lt;label&gt;李四&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('wangwu'); }"&gt;
+        &lt;input type="checkbox" class="hidden" value="wangwu" data-bind="checked: checkboxChecked"&gt;
+        &lt;label&gt;王五&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div>
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+        <div data-bind="inline field">
+            <input type="checkbox" value="zhangsan" data-bind="checked: checkboxChecked">张三</input>
+            <input type="checkbox" value="lisi" data-bind="checked: checkboxChecked">李四</input>
+            <input type="checkbox" value="wangwu" data-bind="checked: checkboxChecked">王五</input>
+        </div>
+        <br>
+        <div class="inline field">
+            <div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('zhangsan'); }">
+                <input type="checkbox" class="hidden" value="zhangsan" data-bind="checked: checkboxChecked">
+                <label>张三</label>
+            </div>
+            <div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('lisi'); }">
+                <input type="checkbox" class="hidden" value="lisi" data-bind="checked: checkboxChecked">
+                <label>李四</label>
+            </div>
+            <div class="ui checkbox" data-bind="click: function () { checkboxChecked.toggleValue('wangwu'); }">
+                <input type="checkbox" class="hidden" value="wangwu" data-bind="checked: checkboxChecked">
+                <label>王五</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<!-- The "options" binding -->
+<h1 class="ui dividing header">The "options" binding</h1>
+<div class="ui info ignored message">
+    <div class="header">Select 元素对应参数:</div>
+    <ul class="list">
+        <li>"option" - 数组对象</li>
+        <li>"optionsValue" - 设置 value 属性值。如果是数组，设置成索引值；如果是对象，设置成对应属性值。</li>
+        <li>"optionsText" - 设置文本属性值。如果是数组，设置成索引值；如果是对象，设置成对应属性值。</li>
+        <li>"optionsCaption" - 默认展示提示文本。建议不要使用，在option队列里实现具体提示项。</li>
+    </ul>
+</div>  
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var selectArray = [{
+    key: "aa", show: "啊啊"
+}, {
+    key: "bb", show: "哦哦"
+}, {
+    key: "cc", show: "哈哈"
+}];
+var selectValue = ko.observable('');
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- 建议不要使用 optionsCaption 默认值未知
+&lt;select data-bind="options: subjects, optionsValue: '0', optionsText: '1', value: subject_id, optionsCaption: '这是提示文字'"&gt;&lt;/select&gt;
+--&gt;
+&lt;select class="ui dropdown" data-bind="options: selectArray, optionsValue: 'key', optionsText: 'show', value: selectValue">&lt;/select&gt;
+&lt;label data-bind="text: selectValue"&gt;&lt;/label&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+        <div class="inline field">
+            <select style="width: 100px;" class="ui dropdown" data-bind="options: selectArray, optionsValue: 'key', optionsText: 'show', value: selectValue"></select>
+            <label data-bind="text: selectValue"></label>
+        </div>
+    </div>
+</div>
+
+<br>
+<!-- The "click" and "event" binding -->
+<h1 class="ui dividing header">The "click" and "event" binding</h1>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var clickFunction = function() {
+    noty("I am clickFunction!");
+};
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;button class="ui orange mini button" data-bind="click: clickFunction"&gt;click binding&lt;/button&gt;
+&lt;button class="ui green mini button" data-bind="event: { 'click': clickFunction }"&gt;event binding&lt;/button&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <button class="ui orange mini button" data-bind="click: clickFunction">click binding</button>
+    <button class="ui green mini button" data-bind="event: { 'click': clickFunction }">event binding</button>
+</div>

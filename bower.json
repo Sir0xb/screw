@@ -1,0 +1,32 @@
+{
+  "name": "screw",
+  "description": "小愿望，小实现",
+  "main": "index.js",
+  "authors": [
+    "Sir0xb"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Sir0xb/screw",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/javascripts/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "^3.4.1",
+    "semantic": "^2.2.7",
+    "requirejs": "^2.3.2",
+    "sweetalert": "^1.1.3",
+    "knockout-mapping": "^2.4.1",
+    "sammy": "^0.7.6",
+    "marked": "^0.3.6",
+    "knockout-amd-helpers": "^1.0.0",
+    "highlight": "^9.9.0",
+    "requirejs-plugins": "^1.0.3",
+    "require-css": "^0.1.8",
+    "lodash": "^4.17.4"
+  }
+}

@@ -1,0 +1,59 @@
+{
+	"menus": [{
+		"type": "parent", "key": "", "path": "", "text": "培训内容", "children": [
+			{
+				"type": "header", "key": "", "path": "", "text": "Knockout"
+			}, {
+				"type": "divider", "key": "", "path": "", "text": ""
+			}, {
+				"type": "item", "key": "", "path": "", "text": "基本用法", "children": [
+					{
+						"type": "item", "key": "priciple", "path": "/traning#/priciple", "text": "数据流原理"
+					}, {
+						"type": "item", "key": "appearance", "path": "/traning#/appearance", "text": "展示控制"
+					}, {
+						"type": "item", "key": "flow", "path": "/traning#/flow", "text": "流程控制"
+					}, {
+						"type": "item", "key": "business", "path": "/traning#/business", "text": "数据流业务控制原理"
+					}
+				]
+			}, {
+				"type": "item", "key": "", "path": "", "text": "高级用法", "children": [
+					{
+						"type": "item", "key": "priciple", "path": "/traning#/priciple", "text": "自定义插件"
+					}, {
+						"type": "item", "key": "appearance", "path": "/traning#/appearance", "text": "自定义继承"
+					}, {
+						"type": "item", "key": "appearance", "path": "/traning#/appearance", "text": "自定义扩展"
+					}
+				]
+			}, {
+				"type": "divider", "key": "", "path": "", "text": ""
+			}, {
+				"type": "header", "key"  : "", "path" : "", "text" : "Sammy"
+			}, {
+				"type": "item", "key": "flow", "path": "/traning#/flow", "text": "高级1"
+			}, {
+				"type": "item", "key": "flow", "path": "/traning#/flow", "text": "高级2"
+			}
+		]	
+	}, {
+		"type": "parent", "key": "", "path": "", "text": "特效", "children": [
+			{
+				"type": "item", "key": "", "path": "", "text": "Loadings", "children": [
+					{
+						"type": "item", "key": "priciple", "path": "/loadings#/aperture", "text": "蓝色光球"
+					}, {
+						"type": "item", "key": "appearance", "path": "/loadings#/dot", "text": "闪烁光点"
+					}, {
+						"type": "item", "key": "flip", "path": "/loadings#/flip", "text": "文字翻转"
+					}, {
+						"type": "item", "key": "business", "path": "/loadings#/business", "text": "数据流业务控制原理"
+					}
+				]
+			}, {
+				"type": "header", "key": "", "path": "", "text": "Knockout test"
+			}
+		]
+	}]
+}

@@ -1,0 +1,132 @@
+<br>
+<!-- The "text" binding -->
+<h1 class="ui dividing header">The "text" binding</h1>
+<div class="ui info ignored message">
+    <p>字符串 or 返回字符串的函数(运行它) or ko对象</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- ko text: theValue --&gt;&lt;!-- /ko --&gt;
+&lt;div data-bind="text: theValue"&gt;&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div><!-- ko text: theValue --><!-- /ko --></div>
+    <div data-bind="text: theValue"></div>
+</div>
+
+<br>
+<!-- The "html" binding -->
+<h1 class="ui dividing header">The "html" binding</h1>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;!-- ko html: theValue --&gt;&lt;!-- /ko --&gt;
+&lt;div data-bind="html: theValue"&gt;&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+        <div data-bind="html: theValue"></div>
+    </div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { theValue('<s>html内容</s>'); }">设置成 "&lt;s&gt;html内容&lt;/s&gt;"</button>
+
+<br><br>
+<!-- The "css" and "style" binding -->
+<h1 class="ui dividing header">The "css" and "style" binding</h1>
+<div class="ui info ignored message">
+    <p>属性值不能是变量</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;style type="text/css"&gt;
+.testRed { color: red; }
+&lt;/style&gt;
+&lt;div data-bind="css: { testRed: theValue }, text: theValue"&gt;&lt;/div&gt;
+&lt;div data-bind="style: { color: theValue() ? 'blue' : 'green' }, text: theValue"&gt;&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+	    <style type="text/css">.testRed{ color: red;  }</style>
+	    <div data-bind="css: { 'testRed': theValue }, text: theValue"></div>
+	    <div data-bind="style: { 'color': theValue() ? 'blue' : 'green' }, text: theValue"></div>
+	</div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { theValue(false); }">设置成 false</button>
+<button class="ui blue mini button" data-bind="click: function () { theValue(true); }">设置成 true</button>
+
+<br><br>
+<!-- The "attr" binding -->
+<h1 class="ui dividing header">The "attr" binding</h1>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;a target="_blank" href="javascript:void(0);" data-bind="html: theValue"&gt;TheValue link&lt;/a&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">Output</div>
+    <div class="ui form">
+	    <a target="_blank" href="javascript:void(0);" data-bind="attr: { href: theValue }">TheValue link</a>
+	</div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { theValue('http://baidu.com'); }">设置成 "http://baidu.com"</button>
+
+<br><br>
+<!-- The "visible" binding -->
+<h1 class="ui dividing header">The "visible" binding</h1>
+<div class="ui info ignored message">
+    <p>元素本身还在 Dome tree 上，只是 "display: none;" 了而已</p>
+</div>
+<div class="ui segment">
+    <div class="ui top attached label">javascript</div>
+    <pre><code class="javascript">
+var theValue = ko.observable("theValue");
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div class="ui top attached label">html</div>
+    <pre><code class="html">
+&lt;div data-bind="visible: theValue"&gt;
+    被隐藏的内容
+&lt;/div&gt;
+    </code></pre>
+</div> 
+<div class="ui segment">
+    <div data-bind="visible: theValue">
+        被隐藏的内容
+    </div>
+</div>
+<button class="ui orange mini button" data-bind="click: function () { theValue(false); }">设置成 false</button>
+<button class="ui blue mini button" data-bind="click: function () { theValue(true); }">设置成 true</button>

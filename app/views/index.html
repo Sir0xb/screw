@@ -1,0 +1,43 @@
+{% extends "viewport/layout.html" %}
+
+{% block content %}
+<!-- ko component: { name: 'ko-layout', params: $data } --><!-- /ko -->
+<div id="loading" data-bind="visible: loading()">
+    <div class='rabbit'></div>
+    <div class='clouds'></div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        require(["knockout", "tools", "ko-amd", "layout"], function (ko, Tools) {
+            ko.bindingHandlers.module.baseDir   = "./javascripts";   // 模块的默认文件夹
+            ko.amdTemplateEngine.defaultPath    = "./";              // 模板的默认文件夹
+            ko.amdTemplateEngine.defaultSuffix  = ".html";           // 默认模板后缀
+
+            var self = ko.utils.extend({}, {
+                parent : {},
+                data   : params
+            });
+            console.log("self", self);
+
+            self.data.mapping           = modules;
+            self.data.mapping.getJS     = Tools.getMappingFunc(self, "js");
+            self.data.mapping.getTemp   = Tools.getMappingFunc(self, "html");
+
+            self.loading   = ko.observable(false);
+            self.viewport  = ko.observable("normal");
+            self.container = ko.observable({});
+
+            ko.applyBindings(self);
+
+            if (self.data.test) {
+                window.root = self;
+            }
+
+            Util.mouseClickEffects();
+        });
+    </script>
+    <script type="text/javascript" src="javascripts/lib/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="javascripts/lib/littleHeart.js"></script>
+{% endblock %}
