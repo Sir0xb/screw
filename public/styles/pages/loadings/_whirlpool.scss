@@ -1,0 +1,69 @@
+.whirlpool_loading {
+    position:absolute;
+    width:100px;
+    height:100px;
+    top:35%;
+    left:50%;
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+.whirlpool_loading .imgs {
+    position: static;
+}
+
+.whirlpool_loading .img {
+    width:100px;
+    height:100px;
+    border-radius:100%;
+    position:absolute;
+    border: 1px solid red;
+    animation: up 1s;
+    animation-iteration-count: infinite;
+    transition:2s;
+    border-bottom:none;
+    border-right:none;
+    animation-timing-function:linear;
+    margin-left: -70px;
+    margin-top: -70px;
+    left:50%;
+    top:50%;
+}
+
+@keyframes up {
+    from{transform:rotate(0deg); }
+    50%{transform:rotate(180deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.whirlpool_loading .img2 {
+    width:90px;
+    height:90px;
+    left:53%;
+    top:53%;
+    animation-delay:.2s;
+}
+
+.whirlpool_loading .img3 {
+    width:80px;
+    height:80px;
+    left:56%;
+    top:56%;
+    animation-delay:.4s;
+}
+
+.whirlpool_loading .img4 {
+    width:70px;
+    height:70px;
+    left:59%;
+    top:59%;
+    animation-delay:.6s;
+}
+
+.whirlpool_loading .img5 {
+    width:60px;
+    height:60px;
+    left:62%;
+    top:62%;
+    animation-delay:.8s;
+}

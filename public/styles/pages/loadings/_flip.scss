@@ -19,7 +19,7 @@
 }
 
 .flip_loading .shell > span {
-    animation: flip 2s infinite;
+    animation: flip_loading 2s infinite;
     display: inline-block;
     transform-origin: 50% 50% 8px;
     transform-style: preserve-3d;
@@ -53,7 +53,7 @@
     animation-delay: 0.7s;
 }
 
-@keyframes flip {
+@keyframes flip_loading {
     to {
         transform: rotateX(1turn);
     }

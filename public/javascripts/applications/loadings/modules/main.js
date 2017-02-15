@@ -10,9 +10,13 @@ define(["knockout", "Super", "sammy", "sammyGoingTo", "sammyMapRoutes"], functio
                 ["#/aperture",              function (){ this.goingTo("loading", "aperture"); }],
                 ["#/dot",                   function (){ this.goingTo("loading", "dot"); }],
                 ["#/flip",                  function (){ this.goingTo("loading", "flip"); }],
-                ["#/business",              function (){ this.goingTo("loading", "business"); }],
-                [self.data.appUrl,          function (){ this.goingTo("loading", "priciple") }],
-                [/\/traning\#\/([\s\S]*)/,  function (){ this.goingTo("loading", "priciple") }]
+                ["#/gear",                  function (){ this.goingTo("loading", "gear"); }],
+                ["#/rabit",                 function (){ this.goingTo("loading", "rabit"); }],
+                ["#/sail",                  function (){ this.goingTo("loading", "sail"); }],
+                ["#/whirlpool",             function (){ this.goingTo("loading", "whirlpool"); }],
+                ["#/windmill",              function (){ this.goingTo("loading", "windmill"); }],
+                [self.data.appUrl,          function (){ this.goingTo("loading", "aperture") }],
+                [/\/loading\#\/([\s\S]*)/,  function (){ this.goingTo("loading", "aperture") }]
             ]);
         });
 
